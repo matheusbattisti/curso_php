@@ -1,0 +1,33 @@
+/* RESET */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* NAVBAR */
+#navbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #161616;
+  padding: 10px;
+  text-transform: uppercase;
+  list-style: none;
+}
+
+#navbar li {
+  margin: 0 10px;
+}
+
+#navbar .nav-link {
+  color: #FFF;
+  text-decoration: none;
+  transition: .5s;
+  font-size: 12px;
+}
+
+#navbar .nav-link:hover {
+  color: #999;
+}
