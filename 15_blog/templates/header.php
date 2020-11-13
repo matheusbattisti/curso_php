@@ -1,3 +1,8 @@
+<!-- Helpers e  Posts -->
+<?php
+  include_once("helpers/url.php");
+  include_once("data/posts.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
