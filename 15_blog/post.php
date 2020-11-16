@@ -19,7 +19,7 @@
 
 ?>
 
-<div class="post-container">
+<main id="post-container">
   <div class="content-container">
     <h1 id="main-title"><?= $currentPost['title'] ?></h1>
     <p id="post-description"><?= $currentPost['description'] ?></p>
@@ -51,7 +51,7 @@
       <?php endforeach; ?>
     </ul>
   </div>
-</div>
+</main>
 
 <!-- Inclusão do rodapé -->
 <?php

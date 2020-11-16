@@ -6,6 +6,15 @@
   font-family: 'Montserrat', sans-serif;
 }
 
+html {
+  min-height: 100vh;
+  position: relative;
+}
+
+main {
+  margin-bottom: 250px;
+}
+
 /* NAVBAR */
 #logo {
   position: absolute;
@@ -86,6 +95,11 @@
 
 .post-box .post-title a {
   color: #000;
+  transition: .5s;
+}
+
+.post-box .post-title a:hover {
+  color: #999;
 }
 
 .post-box .post-description {
@@ -110,15 +124,16 @@
 /* FOOTER */
 footer {
   width: 100%;
+  position: absolute;
+  bottom: 0;
   text-align: center;
   background: #000;
   color: #FFF;
   padding: 50px 0;
-  margin-top: 50px;
 }
 
 /* POST */
-.post-container {
+#post-container {
   display: grid;
   grid-template-columns: 75% 25%;
   grid-template-rows: auto;
@@ -127,6 +142,7 @@ footer {
   padding-top: 30px;
   max-width: 1200px;
   margin: 0 auto;
+  margin-bottom: 250px;
 }
 
 .content-container {
@@ -150,6 +166,10 @@ footer {
 
 #main-title {
   font-size: 36px;
+  margin-bottom: 30px;
+}
+
+.img-container {
   margin-bottom: 30px;
 }
 
@@ -207,16 +227,30 @@ footer {
 
   #title-container {
     min-width: 100%;
+    margin-top: 20px;
+  }
+
+  #posts-container {
+    margin-top: 20px;
   }
 
   .post-box {
     flex: 100% 1 0 ;
     padding: 15px;
+    margin: 0;
   }
 
   /* POST */
-  .nav-container {
-    display: none;
+  #post-container {
+    grid-template-columns: 100%;
+    padding: 15px;
+    grid-template-areas: 
+    "main"
+    "sidebar";
+  }
+
+  .img-container img {
+    width: 100%;
   }
 
 }
