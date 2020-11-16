@@ -2,6 +2,7 @@
 <?php
   include_once("helpers/url.php");
   include_once("data/posts.php");
+  include_once("data/categories.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,6 +18,9 @@
 </head>
 <body>
   <header>
+    <a href="<?= $BASE_URL ?>" id="logo">
+      <img src="<?= $BASE_URL ?>/img/logo.svg" alt="Blog Codar">
+    </a>
     <nav>
       <ul id="navbar">
         <li><a href="index.php" class="nav-link">Home</a></li>
