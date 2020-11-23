@@ -1,0 +1,14 @@
+.navbar-brand img {
+  width: 50px;
+}
+
+#main-title {
+  text-align: center;
+  margin-top: 30px;
+}
+
+/* ADD CONTACT */
+#create-form {
+  max-width: 500px;
+  margin: 0 auto;
+}
