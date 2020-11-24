@@ -1,6 +1,13 @@
 <?php
   include_once("helpers/url.php");
   include_once("db/process.php");
+
+  // limpa a mensagem
+  if(isset($_SESSION['msg'])) {
+    $printMsg = $_SESSION['msg'];
+    $_SESSION['msg'] = "";
+  }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

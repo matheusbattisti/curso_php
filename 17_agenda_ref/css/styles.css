@@ -18,6 +18,21 @@
   background-color: #007bff;
 }
 
+#empty-list-text {
+  text-align: center;
+}
+
+#msg {
+  color: #155724;
+  background-color: #d4edda;
+  border: 1px solid #c3e6cb;
+  padding: 10px;
+  text-align: center;
+  max-width: 500px;
+  margin: 0 auto;
+  margin-top: 30px;
+}
+
 .actions {
   text-align: right;
   width: 150px;
@@ -51,7 +66,18 @@
 }
 
 /* ADD CONTACT */
-#create-form {
+#create-form,
+#edit-form {
   max-width: 500px;
   margin: 0 auto;
+}
+
+/* VIEW CONTACT */
+#view-contact-container {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.bold {
+  font-weight: bold;
 }
