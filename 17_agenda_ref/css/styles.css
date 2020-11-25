@@ -4,7 +4,7 @@
 
 #main-title {
   text-align: center;
-  margin: 30px 0;
+  margin: 15px 0 30px;
 }
 
 /* HOME */
@@ -72,6 +72,23 @@
   margin: 0 auto;
 }
 
+#back-link-container {
+  display: block;
+  width: 500px;
+  margin: 30px auto 0;
+}
+
+#back-link {
+  border: 1px solid #007bff;
+  color: #007bff;
+  border-radius: 4px;
+  padding: 5px;
+}
+
+#back-link:hover {
+  text-decoration: none;
+}
+
 /* VIEW CONTACT */
 #view-contact-container {
   max-width: 500px;
@@ -80,4 +97,14 @@
 
 .bold {
   font-weight: bold;
+}
+
+/* MOBILE */
+
+@media(max-width: 480px) {
+
+  #home-link {
+    display: none;
+  }
+
 }

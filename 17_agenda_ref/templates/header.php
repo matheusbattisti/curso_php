@@ -1,6 +1,6 @@
 <?php
-  include_once("helpers/url.php");
-  include_once("db/process.php");
+  include_once("config/url.php");
+  include_once("config/process.php");
 
   // limpa a mensagem
   if(isset($_SESSION['msg'])) {
@@ -28,14 +28,11 @@
     <a class="navbar-brand" href="<? $BASE_URL?>index.php">
       <img src="<? $BASE_URL?>img/logo.svg" alt="Agenda">
     </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse">
+    <div>
       <div class="navbar-nav">
-        <a class="nav-link active" href="<? $BASE_URL?>index.php">Agenda</a>
+        <a class="nav-link active" id="home-link" href="<? $BASE_URL?>index.php">Agenda</a>
         <a class="nav-link active" href="<? $BASE_URL?>create.php">Adicionar contato</a>
       </div>
     </div>
   </nav>
-  </header>
+</header>

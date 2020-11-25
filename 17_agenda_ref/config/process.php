@@ -3,7 +3,7 @@
   session_start();
 
   include_once("connection.php");
-  include_once("helpers/url.php");
+  include_once("url.php");
 
   $data = $_POST;
 
@@ -70,9 +70,7 @@
       $stmt->bindParam(":phone", $phone);
       $stmt->bindParam(":observations", $observations);
       $stmt->bindParam(":id", $id);
-
-      var_dump($stmt); exit;
-
+      
       try {
         $stmt->execute();
         $_SESSION["msg"] = "Contato atualizado com sucesso!";
