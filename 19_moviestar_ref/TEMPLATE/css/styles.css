@@ -280,3 +280,22 @@
     border: 1px solid #333;
     margin: 0 10px;
 }
+
+#reviews-container {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 4px solid #f5c518;
+}
+
+.review {
+    padding: 20px 0;
+    border-bottom: 1px solid #333;
+}
+
+.author-name a {
+    color: #f5c518;
+}
+
+.comment-title {
+    color: #999;
+}
