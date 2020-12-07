@@ -37,44 +37,61 @@
           </nav>
     </header>
     <div id="main-container" class="container-fluid">
-      <div class="offset-md-4 col-md-4 new-movie-container">
-        <h1 class="page-title">Adicionar Filme</h1>
-        <p class="page-description">Adicione sua crítica e compartilhe com o mundo!</p>
-        <form id="add-movie-form" action="">
-          <div class="form-group">
-              <label for="name">Título:</label>
-              <input type="text" class="form-control" id="name" placeholder="Digite o título do filme">
-          </div>
-          <div class="form-group">
-              <label for="image">Imagem:</label>
-              <input type="file" name="image" class="form-control-file">
-          </div>
-          <div class="form-group">
-              <label for="length">Duração:</label>
-              <input type="text" class="form-control" id="length" placeholder="Digite a duração do filme">
-          </div>
-          <div class="form-group">
-              <label for="category">Categoria do filme:</label>
-              <select class="form-control" name="category" id="cateogry">
-                  <option value="">Selecione</option>
-                  <option value="action">Ação</option>
-                  <option value="drama">Drama</option>
-                  <option value="comedy">Comedia</option>
-                  <option value="fantasy">Fantasia / Ficção</option>
-                  <option value="romance">Romance</option>
-              </select>
-          </div>
-          <div class="form-group">
-              <label for="trailer">Trailer:</label>
-              <input type="text" class="form-control" id="trailer" placeholder="Insira o link do trailer">
-          </div>
-          <div class="form-group">
-              <label for="description">Descrição:</label>
-              <textarea class="form-control" name="description" id="description" rows="5"></textarea>
-          </div>
-          <input type="submit" class="btn form-btn" value="Adicionar filme">
-        </form>
-      </div>
+        <h2 class="section-title">Dashboard</h2>
+        <p class="section-description">Adicione ou atualize as informações dos filmes que enviou</p>
+        <div class="col-md-12" id="add-movie-container">
+            <a href="#" class="btn form-btn"><i class="fas fa-plus"></i> Adicionar filme</a>
+        </div>
+        <div class="col-md-12" id="movies-dashboard">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Título</th>
+                    <th scope="col">Nota</th>
+                    <th scope="col" class="actions-column">Ações</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td scope="row">1</th>
+                    <td>Vikings</td>
+                    <td><i class="fas fa-star"></i> 9</td>
+                    <td class="actions-column">
+                        <a href="#" class="edit-btn"><i class="far fa-edit"></i> Editar</a>
+                        <a href="#" class="delete-btn"><i class="fas fa-times"></i> Deletar</a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td scope="row">1</th>
+                    <td>Vikings</td>
+                    <td><i class="fas fa-star"></i> 9</td>
+                    <td class="actions-column">
+                        <a href="#" class="edit-btn"><i class="far fa-edit"></i> Editar</a>
+                        <a href="#" class="delete-btn"><i class="fas fa-times"></i> Deletar</a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td scope="row">1</th>
+                    <td>Vikings</td>
+                    <td><i class="fas fa-star"></i> 9</td>
+                    <td class="actions-column">
+                        <a href="#" class="edit-btn"><i class="far fa-edit"></i> Editar</a>
+                        <a href="#" class="delete-btn"><i class="fas fa-times"></i> Deletar</a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td scope="row">1</th>
+                    <td>Vikings</td>
+                    <td><i class="fas fa-star"></i> 9</td>
+                    <td class="actions-column">
+                        <a href="#" class="edit-btn"><i class="far fa-edit"></i> Editar</a>
+                        <a href="#" class="delete-btn"><i class="fas fa-times"></i> Deletar</a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
     </div>
     <footer id="footer">
         <div id="social-container">

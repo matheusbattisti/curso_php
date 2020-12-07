@@ -276,9 +276,27 @@
     text-align: center;
 }
 
+.movie-details {
+    margin: 25px 0;
+}
+
 .pipe {
     border: 1px solid #333;
     margin: 0 10px;
+}
+
+#reviews-title {
+    margin-bottom: 25px;
+}
+
+#review-form-container {
+    background-color: #333;
+    padding: 20px
+}
+
+#review-form-container select,
+#review-form-container textarea {
+    width: 50%;
 }
 
 #reviews-container {
@@ -298,4 +316,66 @@
 
 .comment-title {
     color: #999;
+}
+
+/* Search */
+#search-title {
+    font-size: 40px;
+}
+
+#search-result {
+    color: #f5c518;
+}
+
+/* Dashboard */
+#add-movie-container {
+    text-align: right;
+}
+
+#movies-dashboard .table {
+    color: #FFF;
+}
+
+#movies-dashboard .table th {
+    border-top: none;
+}
+
+#movies-dashboard .table tr {
+    padding: 15px 0;
+}
+
+.actions-column {
+    max-width: 50px;
+    text-align: center;
+}
+
+.edit-btn,
+.delete-btn {
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin: 0 5px;
+    font-weight: bold;
+    transition: .5s;
+}
+
+.edit-btn {
+    background-color: #0dcaf0;
+    color: #FFF;
+}
+
+.edit-btn:hover {
+    background-color: transparent;
+    color: #0dcaf0;
+    text-decoration: none;
+}
+
+.delete-btn {
+    background-color: #dc3545;
+    color: #FFF;
+}
+
+.delete-btn:hover {
+    background-color: transparent;
+    color: #dc3545;
+    text-decoration: none;
 }
