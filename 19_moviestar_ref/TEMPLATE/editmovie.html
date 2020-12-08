@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MovieStar</title>
+    <link rel="short icon" href="img/moviestar.ico" />
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap.min.css" integrity="sha512-oc9+XSs1H243/FRN9Rw62Fn8EtxjEYWHXRvjS43YtueEewbS6ObfXcJNyohjHqVKFPoXXUxwc+q1K7Dee6vv9g==" crossorigin="anonymous" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+    <!-- MovieStar CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <nav id="main-navbar" class="navbar navbar-expand-lg">
+            <a class="navbar-brand" href="#">
+                <img id="logo" src="img/logo.svg" alt="MovieStar">
+                <span id="moviestar-title">MovieStar</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <form id="search-form" class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Buscar Filmes" aria-label="Search">
+                <button class="btn my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
+              </form>
+            </div>
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Entrar</a>
+                </li>
+              </ul>
+          </nav>
+    </header>
+    <div id="main-container" class="container-fluid">
+      <div class="col-md-12">
+        <div class="row"> 
+          <div class="col-md-6 offset-md-3">
+            <h1>Vikings</h1>
+            <p class="page-description">Altere os dados do filme no formulário abaixo:</p>
+            <form id="add-movie-form" action="">
+              <div class="form-group">
+                  <label for="name">Título:</label>
+                  <input type="text" class="form-control" id="name" placeholder="Digite o título do filme">
+              </div>
+              <div class="form-group">
+                  <label for="image">Imagem:</label>
+                  <input type="file" name="image" class="form-control-file">
+              </div>
+              <div class="form-group">
+                  <label for="length">Duração:</label>
+                  <input type="text" class="form-control" id="length" placeholder="Digite a duração do filme">
+              </div>
+              <div class="form-group">
+                  <label for="category">Categoria do filme:</label>
+                  <select class="form-control" name="category" id="cateogry">
+                      <option value="">Selecione</option>
+                      <option value="action">Ação</option>
+                      <option value="drama">Drama</option>
+                      <option value="comedy">Comedia</option>
+                      <option value="fantasy">Fantasia / Ficção</option>
+                      <option value="romance">Romance</option>
+                  </select>
+              </div>
+              <div class="form-group">
+                  <label for="trailer">Trailer:</label>
+                  <input type="text" class="form-control" id="trailer" placeholder="Insira o link do trailer">
+              </div>
+              <div class="form-group">
+                  <label for="description">Descrição:</label>
+                  <textarea class="form-control" name="description" id="description" rows="5"></textarea>
+              </div>
+              <input type="submit" class="btn form-btn" value="Alterar filme">
+            </form>
+          </div>
+          </div>    
+        </div>   
+      </div>
+    </div>
+    <footer id="footer">
+        <div id="social-container">
+            <ul>
+                <li>
+                    <a href="#"><i class="fab fa-facebook-square"></i></a>
+                </li>
+                <li>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </li>
+                <li>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </li>
+            </ul>
+        </div>
+        <div id="footer-links-container">
+            <ul>
+                <li><a href="#">Adicionar filme</a></li>
+                <li><a href="#">Adicionar crítica</a></li>
+                <li><a href="#">Entrar / Registrar</a></li>
+            </ul>
+        </div>
+        <p>&copy; 2020 Hora de Codar</p>
+    </footer>
+</body>
+</html>

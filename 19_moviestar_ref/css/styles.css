@@ -1,0 +1,381 @@
+/* Navbar */
+.navbar-brand {
+    position: relative;
+}
+
+#logo {
+    width: 50px;
+}
+
+#moviestar-title {
+    color: #FFF;
+    position: absolute;
+    bottom: -2px;
+    font-size: 30px;
+    left: 55px;
+    font-weight: bold;
+}
+
+#main-navbar {
+    background-color: #121212;
+}
+
+#search-form {
+    margin: 0 auto;
+    background: #FFF;
+    border-radius: 5px;
+    width: 50%;
+}
+
+#search-form .form-control {
+    border: none;
+    width: 90%;
+    box-shadow: none;
+}
+
+.navbar .nav-item .nav-link {
+    color: #FFF;
+    font-weight: bold;
+}
+
+/* Home */
+#main-container {
+    background-color: #000000;
+    color: #FFF;
+    min-height: 65vh;
+    padding: 40px;
+}
+
+.section-title {
+    font-size: 24px;
+    border-left: 4px solid #f5c518;
+    padding-left: 12px;
+    margin-top: 20px;
+}
+
+.section-description {
+    color: #CCC;
+    font-size: 18px;
+}
+
+.movies-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -15px;
+}
+
+.movie-card {
+    background-color: #1A1A1A;
+    width: 18%;
+    margin-bottom: 30px;
+    margin-left: 1%;
+    margin-right: 1%;
+}
+
+.card-title {
+    height: 3rem;
+}
+
+.card-title a {
+    font-size: 16px;
+    color: #FFF;
+}
+
+.fas.fa-star {
+    color: #f5c518;
+}
+
+.rating {
+    color: #CCC;
+}
+
+.rate-btn {
+    margin-bottom: 15px;
+    color: #5799ef;
+    background-color: #333;
+    border-color: #333;
+    width: 100%;
+    font-weight: bold;
+}
+
+.rate-btn:hover {
+    background-color: #444;
+    border-color: #444;
+}
+
+.card-btn {
+    color: #000;
+    background-color: #f5c518;
+    border: 2px solid #f5c518;
+    width: 100%;
+}
+
+.card-btn:hover {
+    background-color: transparent;
+    color: #f5c518;
+    border-color: #f5c518;
+}
+
+/* Footer */
+#footer {
+    background-color: #000000;
+    color: #FFF;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+}
+
+#social-container ul,
+#footer-links-container ul {
+    list-style: none;
+    padding: 0;
+}
+
+#social-container li,
+#footer-links-container li {
+    display: inline-block;
+    margin: 0 20px;
+}
+
+#social-container li {
+    height: 40px;
+    width: 40px;
+    border-radius: 100%;
+    transition: .5s;
+    line-height: 3;
+}
+
+#social-container li:hover {
+    background-color: #333;
+}
+
+#social-container li a,
+#footer-links-container li a {
+    color: #FFF;
+    transition: .5s;
+}
+
+#social-container li i {
+    font-size: 25px;
+}
+
+#footer-links-container {
+    margin: 30px 0;
+}
+
+/* Login / Registro */
+#auth-row {
+    justify-content: space-evenly;
+}
+
+#login-container h2,
+#register-container h2 {
+    text-align: center;
+    border-bottom: 2px solid #f5c518;
+    width: 200px;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+#login-container form,
+#register-container form {
+    max-width: 400px;
+    margin: 30px auto;
+}
+
+.form-btn {
+    color: #000;
+    background-color: #f5c518;
+    border: 2px solid #f5c518;
+}
+
+.form-btn:hover {
+    background-color: transparent;
+    color: #f5c518;
+}
+
+/* Edit Profile */
+#profile-image {
+    width: 100px;
+    border: 6px solid #f5c518;
+    border-radius: 100%;
+}
+
+.page-description {
+    color: #999;
+}
+
+#bio {
+    max-width: 400px;
+}
+
+.disabled {
+    background-color: #CCC !important;
+}
+
+/* Profile */
+.profile-container {
+    justify-content: center;
+}
+
+.page-title:after {
+    content: "";
+    width: 300px;
+    border-bottom: 2px solid #f5c518;
+    display: block;
+    margin: 0 auto;
+}
+
+.profile-container #profile-image {
+    margin: 20px auto;
+}
+
+.about-title {
+    color: #CCC;
+}
+
+.profile-description {
+    max-width: 500px;
+    margin: 20px auto;
+}
+
+.added-movies-container,
+.about-container {
+    padding-top: 20px;
+}
+
+.about-container {
+    text-align: center;
+    background-color: #333333;
+    border-bottom: 3px solid #CCC;
+}
+
+.added-movies-container {
+    background-color: #333333;
+}
+
+.added-movies-container .movies-container {
+    padding: 20px;
+}
+
+.added-movies-container .movie-card {
+    width: 31%;
+}
+
+/* Add Movie */
+.new-movie-container {
+    text-align: center;
+}
+
+#add-movie-form {
+    text-align: left;
+}
+
+/* Movie */
+.movie-container {
+    text-align: center;
+}
+
+.movie-details {
+    margin: 25px 0;
+}
+
+.pipe {
+    border: 1px solid #333;
+    margin: 0 10px;
+}
+
+#reviews-title {
+    margin-bottom: 25px;
+}
+
+#review-form-container {
+    background-color: #333;
+    padding: 20px
+}
+
+#review-form-container select,
+#review-form-container textarea {
+    width: 50%;
+}
+
+#reviews-container {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 4px solid #f5c518;
+}
+
+.review {
+    padding: 20px 0;
+    border-bottom: 1px solid #333;
+}
+
+.author-name a {
+    color: #f5c518;
+}
+
+.comment-title {
+    color: #999;
+}
+
+/* Search */
+#search-title {
+    font-size: 40px;
+}
+
+#search-result {
+    color: #f5c518;
+}
+
+/* Dashboard */
+#add-movie-container {
+    text-align: right;
+}
+
+#movies-dashboard .table {
+    color: #FFF;
+}
+
+#movies-dashboard .table th {
+    border-top: none;
+}
+
+#movies-dashboard .table tr {
+    padding: 15px 0;
+}
+
+.actions-column {
+    max-width: 50px;
+    text-align: center;
+}
+
+.edit-btn,
+.delete-btn {
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin: 0 5px;
+    font-weight: bold;
+    transition: .5s;
+}
+
+.edit-btn {
+    background-color: #0dcaf0;
+    color: #FFF;
+}
+
+.edit-btn:hover {
+    background-color: transparent;
+    color: #0dcaf0;
+    text-decoration: none;
+}
+
+.delete-btn {
+    background-color: #dc3545;
+    color: #FFF;
+}
+
+.delete-btn:hover {
+    background-color: transparent;
+    color: #dc3545;
+    text-decoration: none;
+}
