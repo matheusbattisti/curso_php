@@ -38,6 +38,31 @@
     font-weight: bold;
 }
 
+.msg-container {
+    background-color: #000;
+    padding: 15px;
+}
+
+.msg {
+    width: 80%;
+    margin: 0 auto;
+    padding: 10px;
+    border: solid 1px #000;
+    text-align: center;
+}
+
+.msg.error {
+    color: #842029;
+    background-color: #f8d7da;
+    border-color: #f5c2c7;
+}
+
+.message.success {
+    color: #0f5132;
+    background-color: #d1e7dd;
+    border-color: #badbcc;
+}
+
 /* Home */
 #main-container {
     background-color: #000000;

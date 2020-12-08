@@ -2,6 +2,17 @@
 
   include_once("db.php");
   include_once("globals.php");
+  include_once("models/Message.php");
+
+  $message = new Message($BASE_URL);
+
+  $flashMessage = $message->getMessage();
+
+  if($flashMessage["msg"] != "") {
+
+    $message->clearMessage();
+
+  }
 
 ?>
 <!DOCTYPE html>
@@ -42,3 +53,8 @@
           </ul>
       </nav>
   </header>
+  <?php if($flashMessage["msg"] != ""): ?>
+    <div class="msg-container">
+      <p class="msg <?= $flashMessage["type"] ?>"><?= $flashMessage["msg"] ?></p>
+    </div>
+  <?php endif; ?>
