@@ -6,13 +6,12 @@
   require_once("models/Message.php");
   require_once("dao/UserDAO.php");
 
-  print_r($_POST); exit;
-
   // Recebendo os inputs do formulário
   $name = filter_input(INPUT_POST, "name");
   $lastname = filter_input(INPUT_POST, "lastname");
   $email = filter_input(INPUT_POST, "email", FILTER_VALIDATE_EMAIL);
   $password = filter_input(INPUT_POST, "password");
+  $confirmPassword = filter_input(INPUT_POST, "confirmpassword");
   $type = filter_input(INPUT_POST, "type");
 
   $message = new Message($BASE_URL);
@@ -23,29 +22,40 @@
     // Verificação de campos necessários para registro
     if($name && $lastname && $email && $password) {
 
-      $userDao = new UserDAO($conn);
+      $userDao = new UserDAO($conn, $url);
 
-      // Verificar se usuário já existe
-      if($userDao->findByEmail($email) === false) {
+      // Verificar se as senhas são iguais
+      if($password === $confirmPassword) {
 
-        $user = new User();
+        // Verificar se usuário já existe
+        if($userDao->findByEmail($email) === false) {
 
-        // Criar token e senha
-        $userToken = bin2hex(random_bytes(50));
-        $finalPassword = password_hash($password, PASSWORD_BCRYPT);
+          $user = new User();
 
-        print_r($userToken); exit;
+          // Criar token e senha
+          $userToken = bin2hex(random_bytes(50));
+          $finalPassword = password_hash($password, PASSWORD_BCRYPT);
 
-        $user->name = $name;
-        $user->lastname = $lastname;
-        $user->email = $email;
-        $user->password = $password;
+          print_r($userToken); exit;
 
-        $userDao->create($user);
+          $user->name = $name;
+          $user->lastname = $lastname;
+          $user->email = $email;
+          $user->password = $password;
+
+          $auth = true;
+
+          $userDao->create($user, $auth);
+
+        } else {
+
+          $message->setMessage("Usuário já cadastrado, tente outro e-mail.", "error", "auth.php");
+
+        }
 
       } else {
 
-        $message->setMessage("Usuário já cadastrado, tente outro e-mail.", "error", "auth.php");
+        $message->setMessage("As senhas não são iguais.", "error", "auth.php");
 
       }
 

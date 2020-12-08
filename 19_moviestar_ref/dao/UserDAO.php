@@ -1,16 +1,21 @@
 <?php
 
   include_once("models/User.php");
+  include_once("models/Auth.php");
 
   class UserDAO implements UserDAOInterface {
 
     private $conn;
+    private $url;
+    private $auth;
 
-    public function __construct(PDO $conn) {
+    public function __construct(PDO $conn, $url) {
       $this->conn = $conn;
+      $this->url = $url;
+      $this->auth = new Auth($conn, $this->url);
     }
 
-    public function create(User $user) {
+    public function create(User $user, $authUser = false) {
 
       $stmt = $this->conn->prepare("INSERT INTO users (
         name, lastname, email, password, token
@@ -25,6 +30,13 @@
       $stmt->bindParam(":token", $user->token);
 
       $stmt->execute();
+
+      // Autentica usuário caso venha da tela de registro
+      if($authUser) {
+
+        $this->auth->setTokenToSession($user->token);
+
+      }
 
     }
 

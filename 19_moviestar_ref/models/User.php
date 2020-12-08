@@ -15,7 +15,7 @@
 
   interface UserDAOInterface {
 
-    public function create(User $user);
+    public function create(User $user, $authUser = false);
     public function update(User $user);
     public function findByToken($token);
     public function findByEmail($email);
