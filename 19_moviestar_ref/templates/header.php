@@ -1,8 +1,9 @@
 <?php
 
-  include_once("db.php");
-  include_once("globals.php");
-  include_once("models/Message.php");
+  require_once("db.php");
+  require_once("globals.php");
+  require_once("models/Message.php");
+  require_once("dao/UserDAO.php");
 
   $message = new Message($BASE_URL);
 
@@ -13,6 +14,10 @@
     $message->clearMessage();
 
   }
+
+  $userDao = new UserDAO($conn, $BASE_URL);
+
+  $userData = $userDao->verifyToken(false);
 
 ?>
 <!DOCTYPE html>
@@ -47,9 +52,18 @@
           </form>
         </div>
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="<?= $BASE_URL ?>auth.php">Entrar</a>
-            </li>
+            <?php if($userData): ?>
+              <li class="nav-item">
+                <a class="nav-link bold" href="<?= $BASE_URL ?>profile.php"><?= $userData->name ?></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="<?= $BASE_URL ?>logout.php">Sair</a>
+              </li>
+            <?php else: ?>
+              <li class="nav-item">
+                <a class="nav-link" href="<?= $BASE_URL ?>auth.php">Entrar / Cadastrar</a>
+              </li>
+            <?php endif; ?>
           </ul>
       </nav>
   </header>

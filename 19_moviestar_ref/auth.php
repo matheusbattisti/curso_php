@@ -12,11 +12,11 @@
             <input type="hidden" name="type" value="login">
             <div class="form-group">
               <label for="email">E-mail:</label>
-              <input type="email" class="form-control" id="email" placeholder="Digite seu e-mail">
+              <input type="email" class="form-control" id="email" name="email" placeholder="Digite seu e-mail">
             </div>
             <div class="form-group">
               <label for="password">Senha:</label>
-              <input type="password" class="form-control" id="password" placeholder="Digite sua senha">
+              <input type="password" class="form-control" id="password" name="password" placeholder="Digite sua senha">
             </div>
             <input type="submit" class="btn card-btn" value="Entrar">
           </form>

@@ -1,19 +1,19 @@
 <?php
 
-  include_once("templates/header.php");
+  require_once("templates/header.php");
 
   // Checa autenticação
-  include_once("models/Auth.php");
+  require_once("dao/UserDAO.php");
 
   // Verifica o token, se não for o correto redireciona para a home
-  $auth = new Auth($conn, $BASE_URL);
+  $auth = new UserDAO($conn, $BASE_URL);
 
-  $auth->checkToken();
+  $userData = $auth->verifyToken();
 
 ?>
   <h1>Profile</h1>
 <?php
 
-  include_once("templates/footer.php");
+  require_once("templates/footer.php");
 
 ?>

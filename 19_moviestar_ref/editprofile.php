@@ -1,0 +1,63 @@
+<?php
+
+  require_once("templates/header.php");
+
+  // Checa autenticação
+  require_once("dao/UserDAO.php");
+
+  // Verifica o token, se não for o correto redireciona para a home
+  $auth = new UserDAO($conn, $BASE_URL);
+
+  $userData = $auth->verifyToken();
+
+  $fullName = $userData->name . " " . $userData->lastname;
+
+?>
+  <div id="main-container" class="container-fluid">
+    <div class="col-md-12">
+      <form action="<?= $BASE_URL ?>user_process.php" method="POST">
+        <input type="hidden" name="type" value="update">
+        <input type="hidden" name="id" value="<?= $userData->id ?>">
+        <input type="hidden" name="token" value="<?= $userData->token ?>">
+        <div class="row"> 
+          <div class="col-md-4">
+            <h1><?= $fullName ?></h1>
+            <p class="page-description">Altere seus dados no formulário abaixo:</p>
+            <div class="form-group">
+              <label for="name">Nome</label>
+              <input type="text" class="form-control" id="name" name="name" placeholder="Digite seu nome" value="<?= $userData->name ?>">
+            </div>
+            <div class="form-group">
+              <label for="lastname">Sobrenome</label>
+              <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Digite seu sobrenome" value="<?= $userData->lastname ?>">
+            </div>
+            <div class="form-group">
+              <label for="email">E-mail:</label>
+              <input type="email" class="form-control disabled" id="email" name="email" placeholder="Digite seu e-mail" readonly value="<?= $userData->email ?>">
+            </div>
+            <div class="form-group">
+              <label for="password">Senha:</label>
+              <input type="password" class="form-control" id="password" name="password" placeholder="Digite sua senha" value="<?= $userData->password ?>">
+            </div>
+            <input type="submit" class="btn form-btn" value="Alterar">
+          </div>
+          <div class="col-md-6">
+            <img class="img-fluid" id="profile-image" src="img/user.png" alt="Matheus Battisti">
+            <div class="form-group">
+              <label for="image">Foto</label>
+              <input type="file" name="image" class="form-control-file">
+            </div>
+            <div class="form-group">
+              <label for="bio">Sobre você:</label>
+              <textarea class="form-control" id="bio" name="bio" rows="5" placeholder="Conte quem você é, o que faz, onde trabalha..."><?= $userData->bio ?></textarea>
+            </div>
+          </div>    
+        </div>   
+      </form>
+    </div>
+  </div>
+<?php
+
+  require_once("templates/footer.php");
+
+?>

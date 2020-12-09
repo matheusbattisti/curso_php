@@ -35,7 +35,15 @@
 
 .navbar .nav-item .nav-link {
     color: #FFF;
-    font-weight: bold;
+    transition: .5s;
+}
+
+.navbar .nav-item .nav-link:hover {
+    color: #999;
+}
+
+.bold {
+    font-weight: bold !important;
 }
 
 .msg-container {
@@ -57,7 +65,7 @@
     border-color: #f5c2c7;
 }
 
-.message.success {
+.msg.success {
     color: #0f5132;
     background-color: #d1e7dd;
     border-color: #badbcc;
