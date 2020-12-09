@@ -9,7 +9,7 @@
 
   $flashMessage = $message->getMessage();
 
-  if($flashMessage["msg"] != "") {
+  if(!empty($flashMessage["msg"])) {
 
     $message->clearMessage();
 
@@ -54,6 +54,9 @@
         <ul class="navbar-nav mr-auto">
             <?php if($userData): ?>
               <li class="nav-item">
+                <a class="nav-link bold" href="<?= $BASE_URL ?>newmovie.php"><i class="far fa-plus-square"></i> Adicionar Filme</a>
+              </li>
+              <li class="nav-item">
                 <a class="nav-link bold" href="<?= $BASE_URL ?>profile.php"><?= $userData->name ?></a>
               </li>
               <li class="nav-item">
@@ -67,7 +70,7 @@
           </ul>
       </nav>
   </header>
-  <?php if($flashMessage["msg"] != ""): ?>
+  <?php if(!empty($flashMessage["msg"])): ?>
     <div class="msg-container">
       <p class="msg <?= $flashMessage["type"] ?>"><?= $flashMessage["msg"] ?></p>
     </div>

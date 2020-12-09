@@ -3,14 +3,17 @@
   require_once("templates/header.php");
 
   // Checa autenticação
+  require_once("models/User.php");
   require_once("dao/UserDAO.php");
+
+  $userModel = new User();
 
   // Verifica o token, se não for o correto redireciona para a home
   $auth = new UserDAO($conn, $BASE_URL);
 
   $userData = $auth->verifyToken();
 
-  $fullName = $userData->name . " " . $userData->lastname;
+  $fullName = $userModel->getFullName($userData);
 
 ?>
   <div id="main-container" class="container-fluid">
@@ -35,10 +38,6 @@
               <label for="email">E-mail:</label>
               <input type="email" class="form-control disabled" id="email" name="email" placeholder="Digite seu e-mail" readonly value="<?= $userData->email ?>">
             </div>
-            <div class="form-group">
-              <label for="password">Senha:</label>
-              <input type="password" class="form-control" id="password" name="password" placeholder="Digite sua senha" value="<?= $userData->password ?>">
-            </div>
             <input type="submit" class="btn form-btn" value="Alterar">
           </div>
           <div class="col-md-6">
@@ -52,8 +51,27 @@
               <textarea class="form-control" id="bio" name="bio" rows="5" placeholder="Conte quem você é, o que faz, onde trabalha..."><?= $userData->bio ?></textarea>
             </div>
           </div>    
-        </div>   
-      </form>
+        </div> 
+      </form> 
+      <div class="row" id="change-password-container">
+        <div class="col-md-4">
+          <h2>Alterar a senha:</h2>
+          <p class="page-description">Digite a nova senha e confirme, para alterar a senha:</p>
+          <form action="<?= $BASE_URL ?>user_process.php" method="POST">
+            <input type="hidden" name="type" value="changepassword">
+            <input type="hidden" name="id" value="<?= $userData->id ?>">
+            <div class="form-group">
+              <label for="password">Senha:</label>
+              <input type="password" class="form-control" id="password" name="password" placeholder="Digite sua senha">
+            </div>
+            <div class="form-group">
+              <label for="confirmpassword">Confirmação de senha:</label>
+              <input type="password" class="form-control" id="confirmpassword" name="confirmpassword" placeholder="Confirme a sua senha">
+            </div>
+            <input type="submit" class="btn form-btn" value="Alterar Senha">
+          </form>
+        </div>
+      </div> 
     </div>
   </div>
 <?php

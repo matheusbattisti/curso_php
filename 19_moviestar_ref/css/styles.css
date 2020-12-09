@@ -24,7 +24,7 @@
     margin: 0 auto;
     background: #FFF;
     border-radius: 5px;
-    width: 50%;
+    width: 60%;
 }
 
 #search-form .form-control {
@@ -244,6 +244,10 @@
 
 .disabled {
     background-color: #CCC !important;
+}
+
+#change-password-container {
+    margin-top: 30px;
 }
 
 /* Profile */

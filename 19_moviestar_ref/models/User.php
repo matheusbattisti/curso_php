@@ -11,6 +11,10 @@
     public $bio;
     public $token;
 
+    public function getFullName(User $user) {
+      return $user->name . " " . $user->lastname;
+    }
+
   }
 
   interface UserDAOInterface {
@@ -25,5 +29,6 @@
     public function authenticateUser($email, $password);
     public function findByEmail($email);
     public function findById($id);
+    public function changePassword(User $user);
 
   }

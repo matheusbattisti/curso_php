@@ -21,10 +21,14 @@
 
     public function getMessage() {
 
-      return [
-        "msg" => $_SESSION["msg"],
-        "type" => $_SESSION["type"]
-      ];
+      if(!empty($_SESSION["msg"])) {
+        return [
+          "msg" => $_SESSION["msg"],
+          "type" => $_SESSION["type"]
+        ];
+      } else {
+        return false;
+      }
 
     }
 

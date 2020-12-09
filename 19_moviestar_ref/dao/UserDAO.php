@@ -62,34 +62,41 @@
         name = :name,
         lastname = :lastname,
         email = :email,
-        password = :password,
         image = :image,
         bio = :bio,
-        token = :token 
+        token = :token
         WHERE id = :id
       ");
-
-      // Encontra usuário para comparar senhas
-      $userDB = $this->findByEmail($user->email);
-
-      $finalPassword = password_hash($user->password, PASSWORD_DEFAULT);
-
-      if($finalPassword != $userDB->password && $user->password != "") {
-        
-        
-
-      }
 
       $stmt->bindParam(":name", $user->name);
       $stmt->bindParam(":lastname", $user->lastname);
       $stmt->bindParam(":email", $user->email);
-      $stmt->bindParam(":password", $user->password);
       $stmt->bindParam(":image", $user->image);
       $stmt->bindParam(":bio", $user->bio);
       $stmt->bindParam(":token", $user->token);
       $stmt->bindParam(":id", $user->id);
 
       $stmt->execute();
+        
+      // Redireciona e apresenta mensagem de sucesso
+      $this->message->setMessage("Dados atualizados com sucesso!", "success", "editprofile.php");
+      
+    }
+
+    public function changePassword($user) {
+
+      $stmt = $this->conn->prepare("UPDATE users SET 
+        password = :password
+        WHERE id = :id
+      ");
+
+      $stmt->bindParam(":password", $user->password);
+      $stmt->bindParam(":id", $user->id);
+
+      $stmt->execute();
+        
+      // Redireciona e apresenta mensagem de sucesso
+      $this->message->setMessage("Senha atualizada!", "success", "editprofile.php");
       
     }
 
@@ -161,18 +168,25 @@
 
     public function verifyToken($protected = true) {
 
-      // Pega o token da session
-      $token = $_SESSION["token"];
+      
+      if(!empty($_SESSION["token"])) {
 
-      $user = $this->findByToken($token);
+        // Pega o token da session
+        $token = $_SESSION["token"];
 
-      if($user) {
-        return $user;
-      } else if($protected) {
+        $user = $this->findByToken($token);
 
-        // Redireciona para home caso não haja usuário
-        $this->message->setMessage("Faça a autenticação para acessar esta página.", "error", "index.php");
+        if($user) {
+          return $user;
+        } else if($protected) {
 
+          // Redireciona para home caso não haja usuário
+          $this->message->setMessage("Faça a autenticação para acessar esta página.", "error", "index.php");
+
+        }
+
+      } else {
+        return false;
       }
 
     }
@@ -218,6 +232,27 @@
     }
 
     public function findById($id) {
+
+      if($id != "") {
+
+        $stmt = $this->conn->prepare("SELECT * FROM users WHERE id = :id");
+        
+        $stmt->bindParam(":id", $id);
+
+        $stmt->execute();
+
+        if($stmt->rowCount() > 0) {
+
+          $data = $stmt->fetch();
+          $user = $this->buildUser($data);
+  
+          return $user;
+
+        } else {
+          return false;
+        }
+
+      }
 
     }
 
