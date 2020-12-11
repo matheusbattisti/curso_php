@@ -15,6 +15,14 @@
       return $user->name . " " . $user->lastname;
     }
 
+    public function generateToken() {
+      return bin2hex(random_bytes(50));
+    }
+    
+    public function generateImageName() {
+      return bin2hex(random_bytes(60)) . ".jpg";
+    }
+
   }
 
   interface UserDAOInterface {
@@ -24,7 +32,6 @@
     public function update(User $user);
     public function findByToken($token);
     public function verifyToken($protected = true);
-    public function generateToken();
     public function setTokenToSession($token, $redirect = true);
     public function authenticateUser($email, $password);
     public function findByEmail($email);

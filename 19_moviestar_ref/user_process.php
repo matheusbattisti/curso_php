@@ -15,27 +15,53 @@
   // Atualizar informações do usuário
   if($type === "update") {
 
+    // Pegar info do usuário para substituir apenas o necessário
+    $auth = new UserDAO($conn, $BASE_URL);
+    $userData = $auth->verifyToken();
+
     // Recebendo os inputs do formulário
     $name = filter_input(INPUT_POST, "name");
     $lastname = filter_input(INPUT_POST, "lastname");
     $email = filter_input(INPUT_POST, "email", FILTER_VALIDATE_EMAIL);
-    $image = filter_input(INPUT_POST, "image");
     $bio = filter_input(INPUT_POST, "bio");
-    $token = filter_input(INPUT_POST, "token");
-    $id = filter_input(INPUT_POST, "id");
 
-    // Montando usuário com dados novos
+    // Model do usuário para usar métodos
     $user = new User();
 
-    $user->name = $name;
-    $user->lastname = $lastname;
-    $user->email = $email;
-    $user->image = $image;
-    $user->bio = $bio;
-    $user->token = $token;
-    $user->id = $id;
+    // Alterando o que precisa para atualizar
+    $userData->name = $name;
+    $userData->lastname = $lastname;
+    $userData->email = $email;
+    $userData->bio = $bio;
 
-    $userDao->update($user);
+    // Upload de imagem
+    if(isset($_FILES["image"]) && !empty($_FILES["image"]["tmp_name"])) {
+
+      $image = $_FILES["image"];
+
+      // Checando tipo da imagem
+      if(in_array($image["type"], ["image/jpeg", "image/jpg", "image/png"])) {
+
+        // Checa se é jpg
+        if(in_array($image["type"], ["image/jpeg", "image/jpg"])) {
+          $imageFile = imagecreatefromjpeg($image["tmp_name"]);
+        } else {
+          $imageFile = imagecreatefrompng($image["tmp_name"]);
+        }
+
+        $imageName = $user->generateImageName();
+
+        imagejpeg($imageFile, "./img/users/".$imageName, 100);
+
+        $userData->image = $imageName;
+
+      } else {
+        $message->setMessage("Tipo inválido de imagem, envie jpg ou png!", "error", "editprofile.php");
+      }
+
+    }
+
+    $userDao->update($userData);
 
   // Atualizar senha
   } else if($type === "changepassword") {

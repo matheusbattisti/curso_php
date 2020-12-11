@@ -34,7 +34,7 @@
           $user = new User();
 
           // Criar token e senha
-          $userToken = $userDao->generateToken();
+          $userToken = $user->generateToken();
           $finalPassword = password_hash($password, PASSWORD_DEFAULT);
 
           $user->name = $name;

@@ -26,6 +26,7 @@
       $user->password = $data["password"];
       $user->image = $data["image"];
       $user->bio = $data["bio"];
+      $user->token = $data["token"];
 
       return $user;
 
@@ -98,10 +99,6 @@
       // Redireciona e apresenta mensagem de sucesso
       $this->message->setMessage("Senha atualizada!", "success", "editprofile.php");
       
-    }
-
-    public function generateToken() {
-      return bin2hex(random_bytes(50));
     }
 
     public function findByToken($token) {
@@ -193,6 +190,8 @@
 
     public function authenticateUser($email, $password) {
 
+      $user = new User();
+
       $user = $this->findByEmail($email);
 
       // Checa se o usuário existe
@@ -202,7 +201,7 @@
         if(password_verify($password, $user->password)) {
 
           // Gera o token e coloca na session, sem redirecionar
-          $token = $this->generateToken();
+          $token = $user->generateToken();
 
           $this->setTokenToSession($token, false);
 

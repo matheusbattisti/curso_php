@@ -15,13 +15,15 @@
 
   $fullName = $userModel->getFullName($userData);
 
+  if($userData->image == "") {
+    $userData->image = "user.png";
+  }
+
 ?>
   <div id="main-container" class="container-fluid">
     <div class="col-md-12">
-      <form action="<?= $BASE_URL ?>user_process.php" method="POST">
+      <form action="<?= $BASE_URL ?>user_process.php" method="POST" enctype="multipart/form-data">
         <input type="hidden" name="type" value="update">
-        <input type="hidden" name="id" value="<?= $userData->id ?>">
-        <input type="hidden" name="token" value="<?= $userData->token ?>">
         <div class="row"> 
           <div class="col-md-4">
             <h1><?= $fullName ?></h1>
@@ -41,7 +43,7 @@
             <input type="submit" class="btn form-btn" value="Alterar">
           </div>
           <div class="col-md-6">
-            <img class="img-fluid" id="profile-image" src="img/user.png" alt="Matheus Battisti">
+            <img class="img-fluid" id="profile-image" src="<?= $BASE_URL ?>img/users/<?= $userData->image ?>" alt="Matheus Battisti">
             <div class="form-group">
               <label for="image">Foto</label>
               <input type="file" name="image" class="form-control-file">

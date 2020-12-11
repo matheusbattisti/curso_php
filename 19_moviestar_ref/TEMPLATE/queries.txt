@@ -18,6 +18,7 @@ CREATE TABLE movies
   image VARCHAR(200),
   trailer VARCHAR(100),
   category VARCHAR(50),
+  length VARCHAR(50),
   users_id INT(11) UNSIGNED,
   FOREIGN KEY(users_id) REFERENCES users(id)
 );
