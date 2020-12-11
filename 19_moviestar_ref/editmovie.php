@@ -29,9 +29,10 @@
         <p class="page-description">Altere os dados do filme no formulário abaixo:</p>
         <form id="add-movie-form" action="<?= $BASE_URL ?>movie_process.php" method="POST">
           <input type="hidden" name="type" value="update">
+          <input type="hidden" name="id" value="<?= $movie->id ?>">
           <div class="form-group">
               <label for="name">Título:</label>
-              <input type="text" class="form-control" id="name" placeholder="Digite o título do filme" value="<?= $movie->title ?>">
+              <input type="text" class="form-control" id="title" name="title" placeholder="Digite o título do filme" value="<?= $movie->title ?>">
           </div>
           <div class="form-group">
               <label for="image">Imagem:</label>

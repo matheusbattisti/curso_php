@@ -57,6 +57,29 @@
 
     public function update(Movie $movie) {
 
+      $stmt = $this->conn->prepare("UPDATE users SET 
+        title = :title,
+        description = :description,
+        trailer = :trailer,
+        image = :image,
+        category = :category,
+        length = :length
+        WHERE id = :id
+      ");
+
+      $stmt->bindParam(":title", $movie->title);
+      $stmt->bindParam(":description", $movie->description);
+      $stmt->bindParam(":trailer", $movie->trailer);
+      $stmt->bindParam(":image", $movie->image);
+      $stmt->bindParam(":category", $movie->category);
+      $stmt->bindParam(":length", $movie->length);
+      $stmt->bindParam(":id", $movie->id);
+
+      $stmt->execute();
+        
+      // Redireciona e apresenta mensagem de sucesso
+      $this->message->setMessage("Filme atualizado com sucesso!", "success", "dashboard.php");
+      
     }
 
     public function destroy($id) {

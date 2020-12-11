@@ -69,8 +69,6 @@
         }
       }
 
-      //print_r($movie); exit;
-
       $movieDao->create($movie);
   
     } else {
@@ -92,6 +90,84 @@
       // Verificar se o filme pertence ao usuário
       if($movie->users_id === $userData->id) {
         $movieDao->destroy($movie->id);
+      } else {
+        $message->setMessage("Erro, tente novamente mais tarde!", "error", "dashboard.php");
+      }
+
+    } else {
+
+      $message->setMessage("Este filme não existe!", "error", "dashboard.php");
+
+    }
+
+  } else if($type === "update") {
+
+    // Recebendo os inputs do formulário
+    $title = filter_input(INPUT_POST, "title");
+    $description = filter_input(INPUT_POST, "description");
+    $trailer = filter_input(INPUT_POST, "trailer");
+    $category = filter_input(INPUT_POST, "category");
+    $length = filter_input(INPUT_POST, "length");
+    $id = filter_input(INPUT_POST, "id");
+
+    print_r($_POST);
+    print_r($_FILES["image"]); exit;
+
+    $movieDb = $movieDao->findById($id);
+
+    // Verifica se o filme existe
+    if($movieDb) {
+
+      // Verificar se o filme pertence ao usuário
+      if($movieDb->users_id === $userData->id) {
+
+        // Verificação de dados mínimos
+        if(!empty($title) && 
+          !empty($description) &&
+          !empty($category)) {
+
+            // Criar o objeto de movie, apenas com os dados que vieram
+            $movieDb->title = $title;
+            $movieDb->description = $description;
+            $movieDb->trailer = $trailer;
+            $movieDb->category = $category;
+            $movieDb->length = $length;
+
+            $image = $_FILES["image"];
+
+            // Verifica se veio alguma imagem
+            if(!empty($image)) {
+
+              // Checando tipo da imagem
+              if(in_array($image["type"], ["image/jpeg", "image/jpg", "image/png"])) {
+
+                // Checa se é jpg
+                if(in_array($image["type"], ["image/jpeg", "image/jpg"])) {
+                  $imageFile = imagecreatefromjpeg($image["tmp_name"]);
+                } else {
+                  $imageFile = imagecreatefrompng($image["tmp_name"]);
+                }
+
+                $imageName = $movie->generateImageName();
+
+                imagejpeg($imageFile, "./img/movies/".$imageName, 100);
+
+                $movieDb->image = $imageName;
+
+              } else {
+                $message->setMessage("Tipo inválido de imagem, envie jpg ou png!", "error", "dashboard.php");
+              }
+
+            }
+
+            $movieDao->create($movieDb);
+
+        } else {
+          
+          $message->setMessage("Você precisa adicionar pelo menos: título, descrição e categoria.", "error", "dashboard.php");
+
+        }
+
       } else {
         $message->setMessage("Erro, tente novamente mais tarde!", "error", "dashboard.php");
       }
