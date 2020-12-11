@@ -79,5 +79,27 @@
 
     }
 
+  // Deletar um filme
+  } else if($type === "delete") {
+
+    // Recebendo os inputs do formulário
+    $id = filter_input(INPUT_POST, "id");
+
+    $movie = $movieDao->findById($id);
+
+    if($movie) {
+
+      // Verificar se o filme pertence ao usuário
+      if($movie->users_id === $userData->id) {
+        $movieDao->destroy($movie->id);
+      } else {
+        $message->setMessage("Erro, tente novamente mais tarde!", "error", "dashboard.php");
+      }
+
+    } else {
+
+      $message->setMessage("Este filme não existe!", "error", "dashboard.php");
+
+    }
 
   }

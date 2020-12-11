@@ -1,5 +1,5 @@
 <div class="card movie-card">
-  <img src="<?= $BASE_URL ?>img/movies/<?= $movie->image ?>" class="card-img-top" alt="<?= $movie->title ?>">
+  <div style="background-image: url('<?= $BASE_URL ?>img/movies/<?= $movie->image ?>')" class="card-img-top"></div>
   <div class="card-body">
       <p class="card-rating">
           <i class="fas fa-star"></i>

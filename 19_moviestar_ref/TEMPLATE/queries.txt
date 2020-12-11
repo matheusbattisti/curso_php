@@ -16,7 +16,7 @@ CREATE TABLE movies
   title VARCHAR(100),
   description TEXT,
   image VARCHAR(200),
-  trailer VARCHAR(100),
+  trailer VARCHAR(150),
   category VARCHAR(50),
   length VARCHAR(50),
   users_id INT(11) UNSIGNED,
