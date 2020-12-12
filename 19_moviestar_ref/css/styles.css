@@ -243,10 +243,14 @@
 }
 
 /* Edit Profile */
-#profile-image {
-    width: 100px;
+#profile-image-container {
+    width: 150px;
+    height: 150px;
     border: 6px solid #f5c518;
     border-radius: 100%;
+    background-size: cover;
+    background-position: center;
+    margin: 15px auto;
 }
 
 .page-description {
@@ -276,6 +280,7 @@
     border-bottom: 2px solid #f5c518;
     display: block;
     margin: 0 auto;
+    padding-top: 7px;
 }
 
 .profile-container #profile-image {

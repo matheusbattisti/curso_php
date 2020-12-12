@@ -57,12 +57,12 @@
 
     public function update(Movie $movie) {
 
-      $stmt = $this->conn->prepare("UPDATE users SET 
+      $stmt = $this->conn->prepare("UPDATE movies SET 
         title = :title,
         description = :description,
-        trailer = :trailer,
         image = :image,
         category = :category,
+        trailer = :trailer,
         length = :length
         WHERE id = :id
       ");
@@ -72,6 +72,7 @@
       $stmt->bindParam(":trailer", $movie->trailer);
       $stmt->bindParam(":image", $movie->image);
       $stmt->bindParam(":category", $movie->category);
+      $stmt->bindParam(":trailer", $movie->trailer);
       $stmt->bindParam(":length", $movie->length);
       $stmt->bindParam(":id", $movie->id);
 

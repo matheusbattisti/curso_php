@@ -110,9 +110,6 @@
     $length = filter_input(INPUT_POST, "length");
     $id = filter_input(INPUT_POST, "id");
 
-    print_r($_POST);
-    print_r($_FILES["image"]); exit;
-
     $movieDb = $movieDao->findById($id);
 
     // Verifica se o filme existe
@@ -134,9 +131,9 @@
             $movieDb->length = $length;
 
             $image = $_FILES["image"];
-
+            
             // Verifica se veio alguma imagem
-            if(!empty($image)) {
+            if(!empty($image["tmp_name"])) {
 
               // Checando tipo da imagem
               if(in_array($image["type"], ["image/jpeg", "image/jpg", "image/png"])) {
@@ -147,6 +144,8 @@
                 } else {
                   $imageFile = imagecreatefrompng($image["tmp_name"]);
                 }
+
+                $movie = new Movie();
 
                 $imageName = $movie->generateImageName();
 
@@ -160,7 +159,7 @@
 
             }
 
-            $movieDao->create($movieDb);
+            $movieDao->update($movieDb);
 
         } else {
           

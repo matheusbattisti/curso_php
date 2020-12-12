@@ -27,7 +27,7 @@
       <div class="col-md-6 offset-md-1">
         <h1><?= $movie->title ?></h1>
         <p class="page-description">Altere os dados do filme no formulário abaixo:</p>
-        <form id="add-movie-form" action="<?= $BASE_URL ?>movie_process.php" method="POST">
+        <form id="add-movie-form" action="<?= $BASE_URL ?>movie_process.php" method="POST" enctype="multipart/form-data">
           <input type="hidden" name="type" value="update">
           <input type="hidden" name="id" value="<?= $movie->id ?>">
           <div class="form-group">
@@ -40,7 +40,7 @@
           </div>
           <div class="form-group">
               <label for="length">Duração:</label>
-              <input type="text" class="form-control" id="length" placeholder="Digite a duração do filme" value="<?= $movie->length ?>">
+              <input type="text" class="form-control" id="length" name="length" placeholder="Digite a duração do filme" value="<?= $movie->length ?>">
           </div>
           <div class="form-group">
               <label for="category">Categoria do filme:</label>
@@ -55,7 +55,7 @@
           </div>
           <div class="form-group">
               <label for="trailer">Trailer:</label>
-              <input type="text" class="form-control" id="trailer" placeholder="Insira o link do trailer" value="<?= $movie->trailer ?>">
+              <input type="text" class="form-control" id="trailer" name="trailer" placeholder="Insira o link do trailer" value="<?= $movie->trailer ?>">
           </div>
           <div class="form-group">
               <label for="description">Descrição:</label>
@@ -65,7 +65,11 @@
         </form>
       </div>
       <div class="col-md-3">
-        <div class="movie-image-container" style="background-image: url('<?= $BASE_URL ?>img/movies/<?= $movie->image ?>')"></div>
+        <?php if(!empty($movie->image)): ?>
+          <div class="movie-image-container" style="background-image: url('<?= $BASE_URL ?>img/movies/<?= $movie->image ?>')"></div>
+        <?php else: ?>
+          <p>Este filme não possui foto ainda!</p>
+        <?php endif; ?>
       </div>    
     </div>   
   </div>

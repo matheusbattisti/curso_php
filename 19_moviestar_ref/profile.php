@@ -5,27 +5,21 @@
   // Checa autenticação
   require_once("models/User.php");
   require_once("dao/UserDAO.php");
+  require_once("dao/MovieDAO.php");
 
-  $userModel = new User();
-
-  // Verifica o token, se não for o correto redireciona para a home
-  $auth = new UserDAO($conn, $BASE_URL);
-
-  // Não precisa de redirect
-  $userData = $auth->verifyToken(false);
+  $user = new User();
+  $userDao = new UserDao($conn, $BASE_URL);
 
   // Pegar detalhes do usuário pelo id do get
   $id = filter_input(INPUT_GET, 'id');
 
-  $user;
-
   if(empty($id)) {
 
-    $user = $userData;
+    $id = $userData->id;
 
   } else {
 
-    $user = $auth->findById($id);
+    $userData = $userDao->findById($id);
 
     // Caso não encontre usuário
     if(!$user) {
@@ -34,7 +28,16 @@
 
   }
 
-  $fullName = $userModel->getFullName($userData);
+  $fullName = $user->getFullName($userData);
+
+  // Verifica se tem imagem
+  if(empty($userData->image)) {
+    $userData->image = "users.png";
+  }
+
+  $movieDao = new MovieDAO($conn, $BASE_URL);
+
+  $userMovies = $movieDao->getMoviesByUserId($id);
 
 ?>
 <div id="main-container" class="container-fluid">
@@ -42,10 +45,10 @@
     <div class="row profile-container">
       <div class="col-md-12 about-container">
         <h1 class="page-title"><?= $fullName ?></h1>
-        <img id="profile-image" src="img/user.png" alt="Matheus Battisti">
+        <div id="profile-image-container" style="background-image: url('<?= $BASE_URL ?>img/users/<?= $userData->image ?>')"></div>
         <h3 class="about-title">Sobre:</h3>
-        <?php if(!empty($user->bio)): ?>
-          <p class="profile-description"><?= $user->bio ?></p>
+        <?php if(!empty($userData->bio)): ?>
+          <p class="profile-description"><?= $userData->bio ?></p>
         <?php else: ?>
           <p class="profile-description">O usuário ainda não escreveu nada aqui...</p>
         <?php endif; ?>
@@ -53,61 +56,12 @@
       <div class="col-md-12 added-movies-container">
         <h3>Filmes que enviou:</h3>
           <div class="movies-container">
-          <div class="card movie-card">
-            <img src="img/vikings.jpg" class="card-img-top" alt="O Gambito da Rainha">
-            <div class="card-body">
-                <p class="card-rating">
-                    <i class="fas fa-star"></i>
-                    <span class="rating">8.6</span>
-                </p>
-                <h5 class="card-title">
-                    <a href="#">O Gambito da Rainha</a>
-                </h5>
-                <a href="#" class="btn btn-primary rate-btn">Avaliar</a>
-                <a href="#" class="btn btn-primary card-btn">Conhecer</a>
-            </div>
-          </div>
-          <div class="card movie-card">
-            <img src="img/vikings.jpg" class="card-img-top" alt="O Gambito da Rainha">
-            <div class="card-body">
-                <p class="card-rating">
-                    <i class="fas fa-star"></i>
-                    <span class="rating">8.6</span>
-                </p>
-                <h5 class="card-title">
-                    <a href="#">O Gambito da Rainha</a>
-                </h5>
-                <a href="#" class="btn btn-primary rate-btn">Avaliar</a>
-                <a href="#" class="btn btn-primary card-btn">Conhecer</a>
-            </div>
-          </div>
-          <div class="card movie-card">
-            <img src="img/vikings.jpg" class="card-img-top" alt="O Gambito da Rainha">
-            <div class="card-body">
-                <p class="card-rating">
-                    <i class="fas fa-star"></i>
-                    <span class="rating">8.6</span>
-                </p>
-                <h5 class="card-title">
-                    <a href="#">O Gambito da Rainha</a>
-                </h5>
-                <a href="#" class="btn btn-primary rate-btn">Avaliar</a>
-                <a href="#" class="btn btn-primary card-btn">Conhecer</a>
-            </div>
-          </div>
-          <div class="card movie-card">
-            <img src="img/vikings.jpg" class="card-img-top" alt="O Gambito da Rainha">
-            <div class="card-body">
-                <p class="card-rating">
-                    <i class="fas fa-star"></i>
-                    <span class="rating">8.6</span>
-                </p>
-                <h5 class="card-title">
-                    <a href="#">O Gambito da Rainha</a>
-                </h5>
-                <a href="#" class="btn btn-primary rate-btn">Avaliar</a>
-                <a href="#" class="btn btn-primary card-btn">Conhecer</a>
-          </div>
+          <?php foreach($userMovies as $movie): ?>
+            <?php require("templates/movie_card.php"); ?>
+          <?php endforeach; ?>
+          <?php if(count($userMovies) === 0): ?>
+              <p class="empty-list">O usuário ainda não enviou filmes!</p>
+          <?php endif; ?>
         </div>
         </div>
       </div>
