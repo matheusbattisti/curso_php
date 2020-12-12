@@ -253,6 +253,11 @@
     margin: 15px auto;
 }
 
+#profile-image-container.review-image {
+    width: 80px;
+    height: 80px;
+}
+
 .page-description {
     color: #999;
 }
@@ -372,6 +377,10 @@
 .review {
     padding: 20px 0;
     border-bottom: 1px solid #333;
+}
+
+.author-details-container {
+    padding-top: 20px;
 }
 
 .author-name a {

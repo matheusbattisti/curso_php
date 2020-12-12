@@ -32,7 +32,7 @@
 
   // Verifica se tem imagem
   if(empty($userData->image)) {
-    $userData->image = "users.png";
+    $userData->image = "user.png";
   }
 
   $movieDao = new MovieDAO($conn, $BASE_URL);

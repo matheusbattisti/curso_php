@@ -42,8 +42,8 @@
             </div>
             <input type="submit" class="btn form-btn" value="Alterar">
           </div>
-          <div class="col-md-6">
-            <img class="img-fluid" id="profile-image" src="<?= $BASE_URL ?>img/users/<?= $userData->image ?>" alt="Matheus Battisti">
+          <div class="col-md-4">
+            <div id="profile-image-container" style="background-image: url('<?= $BASE_URL ?>img/users/<?= $userData->image ?>')"></div>
             <div class="form-group">
               <label for="image">Foto</label>
               <input type="file" name="image" class="form-control-file">
