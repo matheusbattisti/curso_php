@@ -4,7 +4,7 @@
 
   $userModel = new User();
 
-  $fullName = $userModel->getFullName($userData);
+  $fullName = $userModel->getFullName($review->user);
 
   // Verifica se tem imagem
   if(empty($review->user->image)) {

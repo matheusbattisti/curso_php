@@ -90,4 +90,22 @@
 
     }
 
+    public function hasAlreadyReviewed($id, $userId) {
+
+      // verificar se usuário já fez review no filme
+      $stmt = $this->conn->prepare("SELECT * FROM reviews WHERE movies_id = :id AND users_id = :userid");
+
+      $stmt->bindParam(":id", $id);
+      $stmt->bindParam(":userid", $userId);
+
+      $stmt->execute();
+
+      if($stmt->rowCount() > 0) {
+        return true;
+      } else {
+        return false;
+      }
+
+    }
+
   }

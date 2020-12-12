@@ -45,6 +45,9 @@
 
   $movieReviews = $reviewDao->getMovieReviews($id);
 
+  // Verifica se já fez review
+  $alreadyReviewed = $reviewDao->hasAlreadyReviewed($id, $userData->id);
+
 ?>
 <div id="main-container" class="container-fluid">
   <div class="row">
@@ -63,7 +66,8 @@
     </div>
     <div class="offset-md-1 col-md-10" id="reviews-container">
       <h3 id="reviews-title">Avaliações:</h3>
-      <?php if(!$userOwnsMovie): ?>  
+      <!-- Habilita formulário apenas se não é dono do filme e não fez review deste -->
+      <?php if(!$userOwnsMovie && !$alreadyReviewed): ?>  
         <div class="col-md-12" id="review-form-container">
           <h4>Envie sua avaliação</h4>
           <p class="page-description">Preencha o formulário com a nota e comentário sobre o filme</p>
