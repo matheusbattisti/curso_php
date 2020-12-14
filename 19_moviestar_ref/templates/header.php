@@ -51,7 +51,7 @@
         </form>
         
         <div class="collapse navbar-collapse" id="navbar">
-          <ul class="navbar-nav mr-auto">
+          <ul class="navbar-nav">
               <?php if($userData): ?>
                 <li class="nav-item">
                   <a class="nav-link" href="<?= $BASE_URL ?>newmovie.php"><i class="far fa-plus-square"></i> Incluir Filme</a>

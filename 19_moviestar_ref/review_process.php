@@ -23,18 +23,18 @@
   if($type === "create") {
 
     // Recebendo os inputs do formulário
-    $rate = filter_input(INPUT_POST, "rate");
+    $rating = filter_input(INPUT_POST, "rating");
     $review = filter_input(INPUT_POST, "review");
     $movies_id = filter_input(INPUT_POST, "movies_id");
 
     $reviewObject = new Review();
 
     // Validação de dados mínimos
-    if(!empty($rate) && 
+    if(!empty($rating) && 
       !empty($review) &&
       !empty($movies_id)) {
 
-        $reviewObject->rate = $rate;
+        $reviewObject->rating = $rating;
         $reviewObject->review = $review;
         $reviewObject->movies_id = $movies_id;
         $reviewObject->users_id = $userData->id;
