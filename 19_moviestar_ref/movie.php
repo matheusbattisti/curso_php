@@ -57,7 +57,13 @@
   <div class="row">
     <div class="offset-md-1 col-md-6 movie-container">
       <h1 class="page-title"><?= $movie->title ?></h1>
-      <p class="movie-details">Duração: <?= $movie->length ?> <span class="pipe"></span> <?= $movie->category ?> <span class="pipe"></span> <i class="fas fa-star"></i> <?= $movie->rating ?></p>
+      <p class="movie-details">
+        <span>Duração: <?= $movie->length ?></span>
+        <span class="pipe"></span>
+        <span><?= $movie->category ?></span>
+        <span class="pipe"></span>
+        <span><i class="fas fa-star"></i> <?= $movie->rating ?></span>
+      </p>
       <iframe width="560" height="315" src="<?= $movie->trailer ?>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       <p><?= $movie->description ?></p>
     </div>

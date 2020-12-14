@@ -28,7 +28,7 @@
   <title>MovieStar</title>
   <link rel="short icon" href="<?= $BASE_URL ?>img/moviestar.ico" />
   <!-- Bootstrap -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap.min.css" integrity="sha512-oc9+XSs1H243/FRN9Rw62Fn8EtxjEYWHXRvjS43YtueEewbS6ObfXcJNyohjHqVKFPoXXUxwc+q1K7Dee6vv9g==" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap.css" integrity="sha512-drnvWxqfgcU6sLzAJttJv7LKdjWn0nxWCSbEAtxJ/YYaZMyoNLovG7lPqZRdhgL1gAUfa+V7tbin8y+2llC1cw==" crossorigin="anonymous" />
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
   <!-- MovieStar CSS -->
@@ -41,36 +41,37 @@
             <img id="logo" src="<?= $BASE_URL ?>img/logo.svg" alt="MovieStar">
             <span id="moviestar-title">MovieStar</span>
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+          <i class="fas fa-bars"></i>
         </button>
-      
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <form id="search-form" class="form-inline my-2 my-lg-0" action="<?= $BASE_URL?>search.php" method="GET">
-            <input name="q" id="search" class="form-control mr-sm-2" type="search" placeholder="Buscar Filmes" aria-label="Search">
-            <button class="btn my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
-          </form>
-        </div>
-        <ul class="navbar-nav mr-auto">
-            <?php if($userData): ?>
-              <li class="nav-item">
-                <a class="nav-link" href="<?= $BASE_URL ?>newmovie.php"><i class="far fa-plus-square"></i> Incluir Filme</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="<?= $BASE_URL ?>dashboard.php">Meus Filmes</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link bold" href="<?= $BASE_URL ?>editprofile.php"><?= $userData->name ?></a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="<?= $BASE_URL ?>logout.php">Sair</a>
-              </li>
-            <?php else: ?>
-              <li class="nav-item">
-                <a class="nav-link" href="<?= $BASE_URL ?>auth.php">Entrar / Cadastrar</a>
-              </li>
-            <?php endif; ?>
-          </ul>
+        
+        <form id="search-form" class="form-inline my-2 my-lg-0" action="<?= $BASE_URL?>search.php" method="GET">
+          <input name="q" id="search" class="form-control mr-sm-2" type="search" placeholder="Buscar Filmes" aria-label="Search">
+          <button class="btn my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
+        </form>
+        
+        <div class="collapse navbar-collapse" id="navbar">
+          <ul class="navbar-nav mr-auto">
+              <?php if($userData): ?>
+                <li class="nav-item">
+                  <a class="nav-link" href="<?= $BASE_URL ?>newmovie.php"><i class="far fa-plus-square"></i> Incluir Filme</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="<?= $BASE_URL ?>dashboard.php">Meus Filmes</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link bold" href="<?= $BASE_URL ?>editprofile.php"><?= $userData->name ?></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="<?= $BASE_URL ?>logout.php">Sair</a>
+                </li>
+              <?php else: ?>
+                <li class="nav-item">
+                  <a class="nav-link" href="<?= $BASE_URL ?>auth.php">Entrar / Cadastrar</a>
+                </li>
+              <?php endif; ?>
+            </ul>
+          </div>
       </nav>
   </header>
   <?php if(!empty($flashMessage["msg"])): ?>

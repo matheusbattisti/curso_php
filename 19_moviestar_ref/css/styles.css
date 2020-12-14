@@ -72,6 +72,10 @@
     border-color: #badbcc;
 }
 
+.fas.fa-bars {
+    color: #FFF;
+}
+
 /* Home */
 #main-container {
     background-color: #000000;
@@ -467,4 +471,94 @@
     background-color: transparent;
     color: #dc3545;
     text-decoration: none;
+}
+
+/* RESPONSIVO */
+@media(max-width: 450px) {
+
+    #main-container {
+        padding: 20px;
+    }
+
+    /* Home */
+    #search-form {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    #search-form .form-control {
+        width: 85%;
+    }
+
+    .section-title {
+        font-size: 2.2rem;
+        margin-bottom: 1rem;
+    }
+
+    .movies-container {
+        padding: 0 15px;
+    }
+
+    .movie-card {
+        width: 100%;
+    }
+
+    .movie-details {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .movie-details span {
+        padding-bottom: 8px;
+    }
+
+    .pipe {
+        display: none;
+    }
+
+    .movie-container iframe {
+        max-width: 100% !important;
+    }
+
+    #reviews-container {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    #review-form-container select, 
+    #review-form-container textarea {
+        width: 100%;
+    }
+
+    .empty-list {
+        margin-top: 20px;
+    }
+
+    .msg {
+        width: 100%;
+    }
+
+    /* Movie */
+    .review {
+        padding: 0 15px;
+    }
+
+    /* Dashboard */
+    #movies-dashboard {
+        padding: 0;
+    }
+
+    .actions-column {
+        width: 140px;
+    }
+
+    .edit-btn {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    /* Edit movie */
+    .movie-image-container {
+        margin-top: 1rem;
+    }
 }
