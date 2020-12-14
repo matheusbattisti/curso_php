@@ -23,7 +23,7 @@
       $reviewObject = new Review();
 
       $reviewObject->id = $data["id"];
-      $reviewObject->rate = $data["rate"];
+      $reviewObject->rating = $data["rating"];
       $reviewObject->review = $data["review"];
       $reviewObject->users_id = $data["users_id"];
       $reviewObject->movies_id = $data["movies_id"];
@@ -35,12 +35,12 @@
     public function create(Review $review) {
 
       $stmt = $this->conn->prepare("INSERT INTO reviews (
-        rate, review, users_id, movies_id
+        rating, review, users_id, movies_id
       ) VALUES (
-        :rate, :review, :users_id, :movies_id
+        :rating, :review, :users_id, :movies_id
       )");
 
-      $stmt->bindParam(":rate", $review->rate);
+      $stmt->bindParam(":rating", $review->rating);
       $stmt->bindParam(":review", $review->review);
       $stmt->bindParam(":users_id", $review->users_id);
       $stmt->bindParam(":movies_id", $review->movies_id);
@@ -105,6 +105,35 @@
       } else {
         return false;
       }
+
+    }
+
+    // Recebe todas as avaliações de um filme, e calcula a média
+    public function getRatings($id) {
+
+      $stmt = $this->conn->prepare("SELECT * FROM reviews WHERE movies_id = :id");
+
+      $stmt->bindParam(":id", $id);
+
+      $stmt->execute();
+
+      $rating = "Não avaliado";
+
+      if($stmt->rowCount() > 0) {
+
+        $rating = 0;
+
+        $reviews = $stmt->fetchAll();
+
+        foreach($reviews as $review) {
+          $rating += $review["rating"];
+        }
+
+        $rating = $rating / count($reviews);
+  
+      }
+
+      return $rating;
 
     }
 

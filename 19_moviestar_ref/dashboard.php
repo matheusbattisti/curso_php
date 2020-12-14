@@ -20,7 +20,7 @@
   <h2 class="section-title">Dashboard</h2>
   <p class="section-description">Adicione ou atualize as informações dos filmes que enviou</p>
   <div class="col-md-12" id="add-movie-container">
-      <a href="#" class="btn form-btn"><i class="fas fa-plus"></i> Adicionar filme</a>
+      <a href="<?= $BASE_URL ?>newmovie.php" class="btn form-btn"><i class="fas fa-plus"></i> Adicionar filme</a>
   </div>
   <div class="col-md-12" id="movies-dashboard">
       <table class="table">
@@ -37,7 +37,7 @@
               <tr>
                 <td scope="row"><?= $movie->id ?></th>
                 <td><a href="<? $BASE_URL ?>movie.php?id=<?= $movie->id ?>" class="table-movie-title"><?= $movie->title ?></a></td>
-                <td><i class="fas fa-star"></i> 9</td>
+                <td><i class="fas fa-star"></i> <?= $movie->rating ?></td>
                 <td class="actions-column">
                     <a href="<? $BASE_URL ?>editmovie.php?id=<?= $movie->id ?>" class="edit-btn"><i class="far fa-edit"></i> Editar</a>
                     <form action="<? $BASE_URL ?>movie_process.php?id=<?= $movie->id ?>" method="POST">

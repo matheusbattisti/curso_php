@@ -25,7 +25,7 @@ CREATE TABLE movies
 
 CREATE TABLE reviews (
   id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-  rate INT,
+  rating INT,
   review TEXT,
   users_id INT(11) UNSIGNED,
   movies_id INT(11) UNSIGNED,

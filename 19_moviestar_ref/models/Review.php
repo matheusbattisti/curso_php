@@ -3,7 +3,7 @@
   class Review {
 
     public $id;
-    public $rate;
+    public $rating;
     public $review;
     public $users_id;
     public $movies_id;   
@@ -16,5 +16,6 @@
     public function create(Review $review);
     public function getMovieReviews($id);
     public function hasAlreadyReviewed($id, $userId);
+    public function getRatings($id);
 
   }

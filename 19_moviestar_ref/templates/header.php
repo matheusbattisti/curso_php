@@ -46,8 +46,8 @@
         </button>
       
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <form id="search-form" class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Buscar Filmes" aria-label="Search">
+          <form id="search-form" class="form-inline my-2 my-lg-0" action="<?= $BASE_URL?>search.php" method="GET">
+            <input name="q" id="search" class="form-control mr-sm-2" type="search" placeholder="Buscar Filmes" aria-label="Search">
             <button class="btn my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
           </form>
         </div>
@@ -60,7 +60,7 @@
                 <a class="nav-link" href="<?= $BASE_URL ?>dashboard.php">Meus Filmes</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link bold" href="<?= $BASE_URL ?>profile.php"><?= $userData->name ?></a>
+                <a class="nav-link bold" href="<?= $BASE_URL ?>editprofile.php"><?= $userData->name ?></a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="<?= $BASE_URL ?>logout.php">Sair</a>

@@ -396,7 +396,8 @@
     font-size: 40px;
 }
 
-#search-result {
+#search-result,
+.back-link {
     color: #f5c518;
 }
 
@@ -428,7 +429,7 @@
 }
 
 .actions-column {
-    max-width: 50px;
+    max-width: 75px;
     text-align: center;
 }
 

@@ -29,9 +29,9 @@
 
   }
 
+  // Checando se o filme é do usuário
   $userOwnsMovie = false;
 
-  // Checando se o filme é do usuário
   if(!empty($userData)) {
 
     if($userData->id === $movie->users_id) {
@@ -45,15 +45,19 @@
 
   $movieReviews = $reviewDao->getMovieReviews($id);
 
-  // Verifica se já fez review
-  $alreadyReviewed = $reviewDao->hasAlreadyReviewed($id, $userData->id);
+  // Só faz estas checagens se o usuário estiver logado
+  if(!empty($userData)) {
+    // Verifica se já fez review
+    $alreadyReviewed = $reviewDao->hasAlreadyReviewed($id, $userData->id);
+  }
+
 
 ?>
 <div id="main-container" class="container-fluid">
   <div class="row">
     <div class="offset-md-1 col-md-6 movie-container">
       <h1 class="page-title"><?= $movie->title ?></h1>
-      <p class="movie-details">Duração: <?= $movie->length ?> <span class="pipe"></span> <?= $movie->category ?> <span class="pipe"></span> <i class="fas fa-star"></i> 9</p>
+      <p class="movie-details">Duração: <?= $movie->length ?> <span class="pipe"></span> <?= $movie->category ?> <span class="pipe"></span> <i class="fas fa-star"></i> <?= $movie->rating ?></p>
       <iframe width="560" height="315" src="<?= $movie->trailer ?>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       <p><?= $movie->description ?></p>
     </div>
@@ -67,7 +71,7 @@
     <div class="offset-md-1 col-md-10" id="reviews-container">
       <h3 id="reviews-title">Avaliações:</h3>
       <!-- Habilita formulário apenas se não é dono do filme e não fez review deste -->
-      <?php if(!$userOwnsMovie && !$alreadyReviewed): ?>  
+      <?php if(!empty($userData) && !$userOwnsMovie && !$alreadyReviewed): ?>  
         <div class="col-md-12" id="review-form-container">
           <h4>Envie sua avaliação</h4>
           <p class="page-description">Preencha o formulário com a nota e comentário sobre o filme</p>
@@ -75,8 +79,8 @@
             <input type="hidden" name="type" value="create">
             <input type="hidden" name="movies_id" value="<?= $movie->id ?>">
             <div class="form-group">
-              <label for="rate">Nota do filme:</label>
-              <select class="form-control" name="rate" id="rate">
+              <label for="rating">Nota do filme:</label>
+              <select class="form-control" name="rating" id="rating">
                   <option value="">Selecione</option>
                   <option value="1">1</option>
                   <option value="2">2</option>
