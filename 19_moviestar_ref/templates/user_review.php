@@ -17,7 +17,7 @@
       <div id="profile-image-container" class="review-image" style="background-image: url('<?= $BASE_URL ?>img/users/<?= $review->user->image ?>')"></div>
     </div>
     <div class="col-md-9 author-details-container">
-      <h4 class="author-name"><a href="#"><?= $fullName ?></a></h4>
+      <h4 class="author-name"><a href="<?= $BASE_URL ?>profile.php?id=<?= $review->user->id ?>"><?= $fullName ?></a></h4>
       <p><i class="fas fa-star"></i> <?= $review->rating ?></p>
     </div>
     <div class="col-md-12">
