@@ -89,6 +89,77 @@
   padding: 40px;
 }
 
+.section-title {
+  font-size: 24px;
+  border-left: 4px solid #F5C518;
+  padding-left: 12px;
+  margin-top: 20px;
+}
+
+.section-description {
+  color: #CCC;
+  font-size: 18px;
+}
+
+.movies-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -15px;
+}
+
+.movie-card {
+  background-color: #1A1A1A;
+  width: 18%;
+  margin-bottom: 30px;
+  margin-left: 1%;
+  margin-right: 1%;
+}
+
+.movie-card .card-img-top {
+  height: 300px;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+}
+
+.card-title {
+  height: 3rem;
+}
+
+.card-title a {
+  font-size: 16px;
+  color: #FFF;
+}
+
+.fas.fa-star {
+  color: #F5C518;
+}
+
+.rating {
+  color: #CCC;
+}
+
+.rate-btn {
+  margin-bottom: 15px;
+  color: #5799EF;
+  background-color: #333;
+  border-color: #333;
+  width: 100%;
+  font-weight: bold;
+}
+
+.rate-btn:hover {
+  background-color: #444;
+  border-color: #444;
+}
+
+.empty-list {
+  text-align: center;
+  font-size: 18px;
+  width: 100%;
+  font-weight: bold;
+}
+
 /* Login / Register */
 #auth-row {
   justify-content: space-evenly;
@@ -120,6 +191,62 @@
   background-color: transparent;
   color: #F5C518;
   border-color: #F5C518;
+}
+
+/* Edit Profile */
+#profile-image-container {
+  width: 150px;
+  height: 150px;
+  border: 6px solid #F5C518;
+  border-radius: 100%;
+  background-size: cover;
+  background-position: center;
+  margin: 15px auto;
+}
+
+.page-description {
+  color: #999;
+}
+
+#bio {
+  max-width: 400px;
+}
+
+.form-control.disabled {
+  background-color: #BBB;
+}
+
+#change-password-container {
+  margin-top: 30px;
+}
+
+.edit-profile-page .card-btn {
+  width: auto;
+}
+
+/* New Movie */
+.new-movie-container {
+  text-align: center;
+}
+
+#add-movie-form {
+  text-align: left;
+}
+
+.movie-image-container {
+  height: 400px;
+  min-width: 200px;
+  background-position: center;
+  background-size: cover;
+}
+
+.page-title:after {
+  content: "";
+  width: 300px;
+  border-bottom: 2px solid #F5C518;
+  display: block;
+  margin: 0 auto;
+  padding-top: 7px;
 }
 
 /* Footer */
