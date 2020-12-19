@@ -45,14 +45,14 @@
     if($userData->id === $movie->users_id) {
       $userOwnsMovie = true;
     }
+
+    // Resgatar as revies do filme
+    $alreadyReviewed = $reviewDao->hasAlreadyReviewed($id, $userData->id);
  
   }
 
   // Resgatar as reviews do filme
   $movieReviews = $reviewDao->getMoviesReview($movie->id);
-
-  // Resgatar as revies do filme
-  $alreadyReviewed = false;
 
 ?>
 <div id="main-container" class="container-fluid">
@@ -64,7 +64,7 @@
         <span class="pipe"></span>
         <span><?= $movie->category ?></span>
         <span class="pipe"></span>
-        <span><i class="fas fa-star"></i> 9</span>
+        <span><i class="fas fa-star"></i> <?= $movie->rating ?></span>
       </p>
       <iframe src="<?= $movie->trailer ?>" width="560" height="315" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encryted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       <p><?= $movie->description ?></p>
