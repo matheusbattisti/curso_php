@@ -17,3 +17,8 @@
   if(is_int($c)) {
     echo "É um inteiro";
   }
+  echo "<br>";
+  $d = -8;
+  if(is_int($d)) {
+    echo " -8 é um inteiro";
+  }

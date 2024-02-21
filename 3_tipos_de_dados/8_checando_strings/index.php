@@ -14,3 +14,4 @@
   if(is_string("asd")) {
     echo "É uma string 3<br>";
   }
+  
