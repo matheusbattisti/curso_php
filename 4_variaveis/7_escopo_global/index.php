@@ -1,12 +1,12 @@
 <?php
 
-  $teste = "asd";
+  $teste = "GLOBAL_1";
 
   echo "$teste global 1 <br>";
 
   if(5 > 2) {
 
-    $teste = "dsa";
+    $teste = "IF GLOBAL";
 
     echo "$teste if <br>";
 

@@ -21,9 +21,7 @@
   function testando() {
 
     $x = 12;
-
     echo "$x local 2 <br>";
-
   }
 
   $x = 99;
