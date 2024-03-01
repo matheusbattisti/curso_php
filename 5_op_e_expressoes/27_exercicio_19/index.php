@@ -1,5 +1,6 @@
 <?php
 
+
   $a = (int) "testando";
   echo $a . "<br>";
   $b = (int) "asd";

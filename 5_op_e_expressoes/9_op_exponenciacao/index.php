@@ -4,7 +4,8 @@
   echo "<br>";
   echo 2 ** 10;
   echo "<br>";
-
+  echo 3 ** 3;
+  echo "<br>";
   $a = 7;
   $b = 4;
 

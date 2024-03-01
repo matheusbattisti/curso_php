@@ -1,5 +1,37 @@
 <?php
 
+if(12 < 5  || "JOÃO" === "JOÃO"){
+echo "1.Verdadeiro";
+echo "<br>";
+}
+if(1 > 5 || 1){
+  echo "2.Verdadeiro";
+  echo "<br>";
+}
+if(20 === "20" || 54>= 31){
+  echo "3.Verdadeiro";
+  echo "<br>";
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   // comparação 1
   if(12 < 5 || "João" === "João") {
     echo "A operação 1 é verdadeira <br>";
