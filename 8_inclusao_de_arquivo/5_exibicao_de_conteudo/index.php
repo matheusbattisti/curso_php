@@ -2,6 +2,7 @@
 
   $nome = "Matheus";
   $sobrenome = "Battisti";
+  $idade = "31"
 
 ?>
 
@@ -11,6 +12,9 @@
   </div>
   <div>
     <input type="text" value="<?= $sobrenome; ?>">
+  </div>
+  <div>
+    <input type="text" value="<?= $idade; ?>">
   </div>
   <div>
     <input type="submit" value="Enviar">

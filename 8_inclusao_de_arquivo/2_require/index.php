@@ -13,3 +13,13 @@
   require "arquivos/funcao.php";
 
 ?>
+<p>teste</p>
+<?php
+
+  require "arquivos/funcao2.php";
+
+?>
+<hr/>
+<?php
+echo __DIR__
+?>
