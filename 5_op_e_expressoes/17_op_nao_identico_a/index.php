@@ -3,6 +3,10 @@
   $a = 1;
   $b = "1";
 
+  if(5 !== "5"){
+    echo "5 é diferente de B 5 <br>";
+    echo typeof(5);
+  }       
   if($a != $b) {
     echo "A é diferente de B 1 <br>";
   }

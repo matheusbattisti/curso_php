@@ -1,4 +1,19 @@
 <?php
+if(15 > 5 && "João" === "João"){
+  echo "1- verdadeiro";
+}
+echo "<br>";
+if("teste"> 5 && 1){
+  echo '2- verdadeiro';
+}
+echo "<br>";
+if(2 == 3 && 5 >= 3){
+  echo "2- verdadeiro";
+}
+echo "<br>";
+echo '===============================';
+
+echo "<br>";
 
   // comparacao 1
   if(15 > 5 && "João" === "João") {
